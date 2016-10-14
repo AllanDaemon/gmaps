@@ -1,6 +1,8 @@
 
 import unittest
 
+import numpy as np
+
 from ..marker import _marker_layer_options, _symbol_layer_options
 
 
@@ -20,6 +22,12 @@ class MarkerLayer(unittest.TestCase):
             self.locations, hover_text=["t1", "t2"], label="")
         hover_texts = [options["hover_text"] for options in marker_options]
         assert tuple(hover_texts) == ("t1", "t2")
+
+    def test_locations_array(self):
+        marker_options = _marker_layer_options(
+            np.array(self.locations), hover_text="", label="")
+        locations = [options["location"] for options in marker_options]
+        assert locations == self.locations
 
 
 class SymbolLayer(unittest.TestCase):

@@ -9,6 +9,7 @@ import gmaps.geotraitlets as geotraitlets
 import gmaps.bounds as bounds
 
 from .maps import DEFAULT_CENTER
+from .locations import locations_to_list
 
 __all__ = ["Symbol", "Marker", "Markers", "marker_layer", "symbol_layer"]
 
@@ -168,7 +169,7 @@ def _marker_layer_options(locations, hover_text, label):
     if _is_atomic(label):
         label = [label] * number_markers
     options = {
-        "location": locations,
+        "location": locations_to_list(locations),
         "hover_text": hover_text,
         "label": label
     }
