@@ -151,7 +151,7 @@ def _symbol_layer_options(
     if _is_atomic(fill_opacity):
         fill_opacity = [fill_opacity] * number_markers
     options = {
-        "location": locations,
+        "location": locations_to_list(locations),
         "hover_text": hover_text,
         "fill_color": fill_color,
         "stroke_color": stroke_color,
